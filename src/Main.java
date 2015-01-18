@@ -1,8 +1,13 @@
+import javax.swing.JOptionPane;
+
 
 public class Main {
 	public static void main (String []args)
 	{
-		Game_GUI g = new Game_GUI();
+		String p="0";
+		p = JOptionPane.showInputDialog(null, "Enter Player Name", "Player1");
+		Game_GUI g = new Game_GUI( p);
+		
 		
 		
 	}
