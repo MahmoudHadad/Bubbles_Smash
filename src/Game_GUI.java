@@ -91,7 +91,7 @@ public class Game_GUI extends JFrame implements Runnable{
 		scoreLabel = new JLabel("Score: 0");
 		scoreLabel.setForeground(Color.BLUE);
 		scoreLabel.setFont(new Font("Tempus Sans ITC", Font.BOLD, 16));
-		scoreLabel.setBounds(240, 11, 185, 51);
+		scoreLabel.setBounds(220, 11, 185, 51);
 		scorePanel.add(scoreLabel);
 		////////////
 		
@@ -228,7 +228,7 @@ public class Game_GUI extends JFrame implements Runnable{
 
 		
 		initialize ();
-
+		startButton.doClick();
 	}
 	
 	private void initialize ()
@@ -244,7 +244,7 @@ public class Game_GUI extends JFrame implements Runnable{
 	public void run ()
 	{
 		try {
-			 java.lang.Thread.sleep(600);
+			 java.lang.Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
