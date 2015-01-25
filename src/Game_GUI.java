@@ -24,6 +24,7 @@ public class Game_GUI extends JFrame implements Runnable{
 	private Game_GUI gui;
 	Thread t;
 	int level = 1;
+	int minBubbles = 10;
 	int time = 1000;
 	Game_GUI(String p)
 	{
@@ -41,7 +42,7 @@ public class Game_GUI extends JFrame implements Runnable{
 		setVisible(true);
 		setLayout(null);
 		//setSize(411,416);
-		
+		setResizable(false);
 		
 		
 		////////////////////////////////////////////////////
@@ -82,7 +83,7 @@ public class Game_GUI extends JFrame implements Runnable{
 		leveLabel.setBounds(10, 57, 185, 28);
 		scorePanel.add(leveLabel);
 		
-		playerNameLabel = new JLabel("Player Name: " + playerName );
+		playerNameLabel = new JLabel("Welcome: " + playerName );
 		playerNameLabel.setFont(new Font("Tempus Sans ITC", Font.BOLD, 16));
 		playerNameLabel.setForeground(Color.BLUE);
 		playerNameLabel.setBounds(10, 11, 185, 51);
@@ -280,12 +281,33 @@ public class Game_GUI extends JFrame implements Runnable{
 			
 			
 		}
-		if(score >= 9)
+		if(score >= minBubbles)
 		{
 			score = 0;
-			JOptionPane.showMessageDialog(this, "Congratulations you win go to next level");
-			time -=100;
-			level++;
+			if(level ==10)
+			{
+				if(JOptionPane.showConfirmDialog(this, "Congratilations you finished the game \n Start from the begining ?",
+				"Congratilations", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+				{
+					time = 1000;
+					level = 1;
+					minBubbles = 10;
+				}
+				else
+				{
+					dispose();
+				}
+				
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(this, "Congratulations you win go to next level");
+				time -=100;
+				level++;
+				if(level %2 == 1)
+					minBubbles--;
+			}
+			
 			updateLevel();
 			updateScore ();
 		}
