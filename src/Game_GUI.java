@@ -8,6 +8,7 @@ public class Game_GUI extends JFrame implements Runnable{
 	JLabel leveLabel;
 	private JButton [] buttons;
 	private ImageIcon icon;
+	private ImageIcon icon2;
 	private boolean setImage = true;
 	private JPanel buttonsPanel ;
 	private JPanel scorePanel ;
@@ -123,6 +124,7 @@ public class Game_GUI extends JFrame implements Runnable{
 		
 		startButton.addActionListener(new ActionListener() {
 			
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				if(startButton.getText().equals("Start"))
@@ -133,13 +135,13 @@ public class Game_GUI extends JFrame implements Runnable{
 				}
 				else if(startButton.getText().equals("Pause"))
 				{
-					t.interrupt();
+					t.suspend();
 					startButton.setText("Resume");
 				}
 				else 
 				{
 					startButton.setText("Pause");
-					t.notify();			
+					t.resume();			
 				}
 			}
 		});
@@ -239,7 +241,12 @@ public class Game_GUI extends JFrame implements Runnable{
 		Image newimg = img.getScaledInstance(89, 50, java.awt.Image.SCALE_SMOOTH);
 		icon = new ImageIcon(newimg); 
 		
+		icon2 = new ImageIcon(getClass().getResource("making_big_bubbles_dsc_2521.jpg") );
+		Image img2 = icon2 .getImage();
+		Image newimg2 = img2.getScaledInstance(89, 50, java.awt.Image.SCALE_SMOOTH);
+		icon2 = new ImageIcon(newimg2); 
 		
+	
 	}
 	
 	public void run ()
